@@ -1,0 +1,55 @@
+<!doctype HTML>
+<HTML>
+	<HEAD>
+		<meta charset = "UTF-8">
+		<title>Ballon</title>
+		<style>
+			html {
+				height: 100%;
+			}			
+			body {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#ballon {
+				background-color: red;
+				border-radius: 100%;
+			}
+		</style>
+	</HEAD>
+	<body>
+		<div style="width: 200px; height: 200px" id="ballon"></div>
+		<script>
+			var ballon = document.getElementById('ballon');
+			var colors = ['red', 'green', 'blue'];
+			var currentIndex = 0; 
+			ballon.addEventListener('click', function() {
+
+				var size = parseInt(ballon.style.width) + 10;
+				if (size > 420) {
+					ballon.style.width = "200px";
+					ballon.style.height = "200px";
+				} else {
+					ballon.style.width = size + "px";
+					ballon.style.height = size + "px";
+				}
+				currentIndex = (currentIndex + 1) % 3;
+				ballon.style.backgroundColor = colors[currentIndex];
+			});
+			ballon.addEventListener('mouseleave', function() {
+				var size = parseInt(ballon.style.width);
+				if (size > 200) {
+					ballon.style.width = size - 5 + "px";
+					ballon.style.height = size - 5 + "px";
+				}
+				if (currentIndex === 0)
+					currentIndex = 2;
+				else
+					currentIndex -= 1;
+				ballon.style.backgroundColor = colors[currentIndex];
+			});
+		</script>
+	</body>
+</HTML>

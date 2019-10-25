@@ -1,0 +1,103 @@
+<!doctype HTML>
+<HTML>
+	<HEAD>
+		<style>
+			html {
+				height: 100%;
+			}
+			body {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#calc {
+				width: 500px;
+				height: 800px;
+				border: 5px solid red;
+				border-radius: 20px;
+				padding: 20px;
+			}
+			#calcul {
+				display: flex;
+				height: 20%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.text {
+				width: 200px;
+				height: 60px;
+				font-size: 30px;
+			}
+			#operator {
+				height: 60px;
+				width: 50px;
+				font-size: 20px;
+			}
+			#bouton {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 80%;
+			}
+			#submit {
+				font-size: 60px;
+				width: 400px;
+			}
+		</style>
+	</HEAD>
+	<body>
+		<div id="calc">
+			<div id="calcul">
+				<input type="text" id="left" class="text"/>
+				<select id="operator">
+					<option value="+">+</option>
+	    			<option value="-">-</option>
+	    			<option value="*">*</option>
+	    			<option value="/">/</option>
+	    			<option value="%">%</option>
+				</select>
+				<input type="text" id="right" class="text"/>
+			</div>
+			<div id="bouton">
+				<input type="submit" id="submit" value="Try me!"/>
+			</div>
+		</div>
+		<script>
+			setInterval(function() {
+				alert('Please, use me...')
+			}, 30000);
+
+			document.getElementById('submit').addEventListener('click', function() {
+				
+				var nb1 = document.getElementById('left').value;
+				var nb2 = document.getElementById('right').value;
+				var operator = document.getElementById('operator').value;
+
+				if (isNaN(nb1) || isNaN(nb2) || !Number.isInteger(parseFloat(nb1)) || !Number.isInteger(parseFloat(nb2)) || (nb1 = parseInt(nb1)) < 0 || (nb2 = parseInt(nb2)) < 0)
+					alert('Error :(');
+				else {
+					if ((operator === '/' || operator === '%') && nb2 === 0) {
+						alert('It\'s over 9000!');
+						console.log('It\'s over 9000!');
+					} else {
+						var result;
+						if (operator === '+')
+							result = nb1 + nb2;
+						if (operator === '-')
+							result = nb1 - nb2;
+						if (operator === '*')
+							result = nb1 * nb2;
+						if (operator === '/')
+							result = nb1 / nb2;
+						if (operator === '%')
+							result = nb1 % nb2;
+						alert(result);
+						console.log(result);
+					}
+				}
+			});
+		</script>
+	</body>
+</HTML>
