@@ -1,12 +1,13 @@
 <?php
 
-echo $_POST['todo'];
+$str_csv = file_get_contents('list.csv');
 
-$list = ['1'=>'lol', '2'=>'mdr', '3'=>'xd'];
+$tab_csv = explode(PHP_EOL, $str_csv);
 
-$fp = fopen('list.csv', 'w');
+$id = count($tab_csv);
 
+$str_csv = $id . ';' . $_POST['todo'] . PHP_EOL;
+ 
+file_put_contents('list.csv', $str_csv, FILE_APPEND);
 
-fputcsv($fp, $list);
-
-fclose($fp);
+echo json_encode($str_csv);
