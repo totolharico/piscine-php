@@ -1,6 +1,4 @@
 <?php
-$str_csv = file_get_contents('list.csv');
-
-$tab_csv = explode(PHP_EOL, $str_csv);
-
-echo json_encode($tab_csv);
+$fd = file_get_contents('list.csv');
+$split = explode("\n", $fd);
+echo json_encode($split);
